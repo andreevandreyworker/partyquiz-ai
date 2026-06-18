@@ -16,6 +16,11 @@ class AIUnavailableError(AppError):
     code = "ai_unavailable"
 
 
+class RateLimitError(AppError):
+    status_code = 429
+    code = "ai_rate_limited"
+
+
 def register_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(AppError)
     async def handle_app_error(
